@@ -11,7 +11,7 @@ header('Content-Type: application/json');
 $response = new Response();
 
 try {
-    $credentials = include_once __DIR__ . '/../config/credentials.php';
+    $credentials = is_file(__DIR__ . '/../config/credentials.php') ? include_once __DIR__ . '/../config/credentials.php' : [];
     $parameters  = include_once __DIR__ . '/../config/fields.php';
 
     $validator = new Validator($_GET);

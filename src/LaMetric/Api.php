@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace LaMetric;
 
 use GuzzleHttp\Client;
-use LaMetric\Response\Frame;
-use LaMetric\Response\FrameCollection;
+use LaMetric\Response\{Frame, FrameCollection};
 
 class Api
 {
@@ -30,12 +29,17 @@ class Api
         $this->credentials = $credentials;
     }
 
-    public function fetchData(array $parameters = [])
+    /**
+     * @param array $parameters
+     *
+     * @return FrameCollection
+     */
+    public function fetchData(array $parameters = []): FrameCollection
     {
         /**
          * You can call whatever API you want and extract data as array or object
          *
-         * object $this->client (GuzzleHTTP) is available to make curl requests
+         * object $this->client (Guzzle HTTP) is available to make curl requests
          * array $this->credentials contains sensitive data
          * array $parameters (credentials) can contain sensitive data
          *
@@ -59,7 +63,6 @@ class Api
         /**
          * Transform data as FrameCollection and Frame
          */
-
         $frame = new Frame();
         $frame->setText($data['ip']);
         $frame->setIcon('');
