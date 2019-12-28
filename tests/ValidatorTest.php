@@ -12,11 +12,26 @@ class ValidatorTest extends TestCase
     /**
      * @var array
      */
-    private $parameters;
+    protected $parameters;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->parameters = include_once __DIR__ . '/config/fields.php';
+    }
+
+    public function testValidParameters(): void
+    {
+        $httpGetData = [
+            'field-1' => 'hello',
+            'field-2' => 123,
+            'field-3' => 'true',
+            'field-4' => 'iron-man',
+        ];
+
+        $validator = new Validator($httpGetData);
+        $result    = $validator->check($this->parameters);
+
+        $this->assertEquals(true, $result);
     }
 
     public function testMissingTextParameter(): void
@@ -26,8 +41,14 @@ class ValidatorTest extends TestCase
         $httpGetData = [];
 
         $validator = new Validator($httpGetData);
-        $validator->check($this->parameters);
+        $validator->check([
+            [
+                'key'  => 'field-1',
+                'type' => Field::TEXT_TYPE
+            ]
+        ]);
     }
+
 
     public function testInvalidTextParameter(): void
     {

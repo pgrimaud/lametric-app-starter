@@ -23,11 +23,12 @@ class Validator
 
     /**
      * @param array $fields
+     * @return bool
      *
      * @throws InvalidArgumentException
      * @throws MissingArgumentException
      */
-    public function check(array $fields = [])
+    public function check(array $fields = []): bool
     {
         foreach ($fields as $field) {
 
@@ -60,5 +61,7 @@ class Validator
                     break;
             }
         }
+
+        return true;
     }
 }
