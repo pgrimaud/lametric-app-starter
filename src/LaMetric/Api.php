@@ -61,7 +61,7 @@ class Api
          */
 
         $frame = new Frame();
-        $frame->setText('IP');
+        $frame->setText($data['ip']);
 
         $frameCollection->addFrame($frame);
 

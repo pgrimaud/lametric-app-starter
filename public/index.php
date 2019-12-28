@@ -20,7 +20,7 @@ try {
     $api    = new Api(new Client(), $credentials);
     $frames = $api->fetchData($validator->getData());
 
-    echo $response->data($frames);
+    echo $response->printData($frames);
 } catch (Exception $exception) {
-    echo $response->error($exception->getMessage());
+    echo $response->printError($exception->getMessage());
 }

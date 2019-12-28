@@ -23,6 +23,10 @@ class LaMetricTest extends TestCase
         $this->assertIsArray($frames->getFrames());
 
         $response = new Response();
-        $response->data($frames);
+        $json     = $response->printData($frames);
+
+        $jsonFixtures = file_get_contents(__DIR__ . '/fixtures/response.json');
+
+        $this->assertSame($jsonFixtures, $json);
     }
 }

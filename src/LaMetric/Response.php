@@ -14,7 +14,7 @@ class Response
      *
      * @return string
      */
-    public function error(string $value = 'INTERNAL ERROR'): string
+    public function printError(string $value = 'INTERNAL ERROR'): string
     {
         return $this->asJson([
             'frames' => [
@@ -34,7 +34,7 @@ class Response
      */
     private function asJson(array $data = []): string
     {
-        return json_encode($data, JSON_PRETTY_PRINT);
+        return json_encode($data);
     }
 
     /**
@@ -42,7 +42,7 @@ class Response
      *
      * @return string
      */
-    public function data(FrameCollection $frameCollection): string
+    public function printData(FrameCollection $frameCollection): string
     {
         $response = [
             'frames' => []
@@ -50,10 +50,10 @@ class Response
 
         /** @var Frame $frame */
         foreach ($frameCollection->getFrames() as $key => $frame) {
-            $data['frames'][] = [
+            $response['frames'][] = [
                 [
                     'index' => $key,
-                    'icon'  => $frame->getIcon(),
+                    'icon'  => $frame->getIcon() !== '' ? $frame->getIcon() : null,
                     'text'  => $frame->getText(),
                 ],
             ];
