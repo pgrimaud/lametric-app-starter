@@ -49,7 +49,6 @@ class ValidatorTest extends TestCase
         ]);
     }
 
-
     public function testInvalidTextParameter(): void
     {
         $this->expectException(InvalidArgumentException::class);

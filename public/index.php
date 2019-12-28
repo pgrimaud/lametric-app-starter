@@ -6,22 +6,21 @@ use GuzzleHttp\Client;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+header('Content-Type: application/json');
+
 $response = new Response();
 
 try {
-
     $credentials = include_once __DIR__ . '/../config/credentials.php';
     $parameters  = include_once __DIR__ . '/../config/fields.php';
 
     $validator = new Validator($_GET);
     $validator->check($parameters);
 
-    $api = new Api(new Client(), $credentials);
-    $api->fetchData($validator->getPair());
+    $api    = new Api(new Client(), $credentials);
+    $frames = $api->fetchData($validator->getData());
 
-    $frames = $api->getData();
-
-    echo $response->data($x, $validator);
+    echo $response->data($frames);
 } catch (Exception $exception) {
     echo $response->error($exception->getMessage());
 }

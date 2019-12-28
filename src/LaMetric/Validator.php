@@ -64,4 +64,12 @@ class Validator
 
         return true;
     }
+
+    /**
+     * @return array
+     */
+    public function getData(): array
+    {
+        return $this->parameters;
+    }
 }
