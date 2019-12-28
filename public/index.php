@@ -11,7 +11,7 @@ $response = new Response();
 try {
 
     $credentials = include_once __DIR__ . '/../config/credentials.php';
-    $parameters  = include_once __DIR__ . '/../config/parameters.php';
+    $parameters  = include_once __DIR__ . '/../config/fields.php';
 
     $validator = new Validator($_GET);
     $validator->check($parameters);

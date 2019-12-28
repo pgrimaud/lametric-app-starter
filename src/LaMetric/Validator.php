@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LaMetric;
 
+use LaMetric\Exception\{InvalidArgumentException, MissingArgumentException};
+
 class Validator
 {
     /**
@@ -16,11 +18,47 @@ class Validator
      */
     public function __construct(array $parameters = [])
     {
-        $this->parameters = $parameters;
+        $this->parameters = array_map('addslashes', $parameters);
     }
 
-    public function check($parameters)
+    /**
+     * @param array $fields
+     *
+     * @throws InvalidArgumentException
+     * @throws MissingArgumentException
+     */
+    public function check(array $fields = [])
     {
+        foreach ($fields as $field) {
 
+            $key = $field['key'];
+
+            if (!isset($this->parameters[$key])) {
+                throw new MissingArgumentException(sprintf('Missing %s argument', $key));
+            }
+
+            switch ($field['type']) {
+                case Field::TEXT_TYPE:
+                    if ($this->parameters[$key] === '') {
+                        throw new InvalidArgumentException(sprintf('Invalid %s argument', $key));
+                    }
+                    break;
+                case Field::NUMBER_TYPE:
+                    if ((int)$this->parameters[$key] === 0) {
+                        throw new InvalidArgumentException(sprintf('Invalid %s argument', $key));
+                    }
+                    break;
+                case Field::SWITCH_TYPE:
+                    if (!in_array($this->parameters[$key], ['true', 'false'])) {
+                        throw new InvalidArgumentException(sprintf('Invalid %s argument', $key));
+                    }
+                    break;
+                case Field::CHOICES_TYPE:
+                    if (!in_array($this->parameters[$key], $field['choices'])) {
+                        throw new InvalidArgumentException(sprintf('Invalid %s argument', $key));
+                    }
+                    break;
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaMetric;
 
-abstract class Parameters
+abstract class Field
 {
     /**
      * Text field on https://developer.lametric.com
