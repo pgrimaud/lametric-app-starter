@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class LaMetricTest extends TestCase
 {
-    public function testCompleteProccess(): void
+    public function testCompleteProcess(): void
     {
         $httpGetData = [];
 
@@ -26,6 +26,16 @@ class LaMetricTest extends TestCase
         $json     = $response->printData($frames);
 
         $jsonFixtures = file_get_contents(__DIR__ . '/fixtures/response.json');
+
+        $this->assertSame($jsonFixtures, $json);
+    }
+
+    public function testInvalidProcess(): void
+    {
+        $response = new Response();
+        $json     = $response->printError();
+
+        $jsonFixtures = file_get_contents(__DIR__ . '/fixtures/error.json');
 
         $this->assertSame($jsonFixtures, $json);
     }

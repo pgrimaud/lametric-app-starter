@@ -62,6 +62,7 @@ class Api
 
         $frame = new Frame();
         $frame->setText($data['ip']);
+        $frame->setIcon('');
 
         $frameCollection->addFrame($frame);
 
