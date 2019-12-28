@@ -46,10 +46,10 @@ return [
 
 Fields type association with https://developer.lametric.com :
 
- - *Field::TEXT_TYPE* : Text field
- - *Field::NUMBER_TYPE* : Number
- - *Field::SWITCH_TYPE* : Switch
- - *Field::CHOICES_TYPE* : Single choice
+ - **Field::TEXT_TYPE** : Text field
+ - **Field::NUMBER_TYPE** : Number
+ - **Field::SWITCH_TYPE** : Switch
+ - **Field::CHOICES_TYPE** : Single choice
 
 The `src/Validator.php` object will check parameters sent by the app and manage errors.
 
@@ -78,7 +78,7 @@ More information about frames [here](https://lametric-documentation.readthedocs.
 
 You can deploy it everywhere you want. You only need PHP and `ext-json` (`ext-curl` if you consume an API).
 
-You only need to configure the docroot of your vhost to the folder *public*.
+You only need to configure the docroot of your vhost to the folder **public**.
 
 ## Feedback
 
