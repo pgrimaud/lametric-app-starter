@@ -4,6 +4,11 @@
             "LaMetric\\": "src/LaMetric"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "LaMetric\\tests\\": "tests"
+        }
+    },
     "require": {
         "php": "^7.2",
         "ext-json": "*",
