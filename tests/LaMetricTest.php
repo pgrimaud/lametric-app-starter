@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace LaMetric\tests;
+
 use GuzzleHttp\Client;
 use LaMetric\{Api, Response, Validator};
 use PHPUnit\Framework\TestCase;

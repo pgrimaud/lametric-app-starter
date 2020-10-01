@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace LaMetric\tests;
+
 use LaMetric\Field;
 use LaMetric\Validator;
 use LaMetric\Exception\{InvalidArgumentException, MissingArgumentException};
