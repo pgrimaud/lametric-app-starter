@@ -17,11 +17,9 @@ class Response
     {
         return $this->asJson([
             'frames' => [
-                [
-                    'index' => 0,
-                    'text'  => $value,
-                    'icon'  => 'null'
-                ]
+                'index' => 0,
+                'text'  => $value,
+                'icon'  => 'null'
             ]
         ]);
     }
