@@ -6,5 +6,4 @@ namespace LaMetric\Exception;
 
 class MissingArgumentException extends \Exception
 {
-
 }

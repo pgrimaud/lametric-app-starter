@@ -19,8 +19,8 @@ class Response
             'frames' => [
                 'index' => 0,
                 'text'  => $value,
-                'icon'  => 'null'
-            ]
+                'icon'  => 'null',
+            ],
         ]);
     }
 
@@ -31,7 +31,7 @@ class Response
      */
     private function asJson(array $data = []): string
     {
-        return json_encode($data);
+        return (string) json_encode($data);
     }
 
     /**
@@ -42,17 +42,15 @@ class Response
     public function printData(FrameCollection $frameCollection): string
     {
         $response = [
-            'frames' => []
+            'frames' => []  ,
         ];
 
         /** @var Frame $frame */
         foreach ($frameCollection->getFrames() as $key => $frame) {
             $response['frames'][] = [
-                [
-                    'index' => $key,
-                    'icon'  => $frame->getIcon() !== '' ? $frame->getIcon() : null,
-                    'text'  => $frame->getText(),
-                ],
+                'index' => $key,
+                'icon'  => $frame->getIcon() !== '' ? $frame->getIcon() : null,
+                'text'  => $frame->getText(),
             ];
         }
 

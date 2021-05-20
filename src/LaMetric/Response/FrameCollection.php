@@ -9,12 +9,12 @@ class FrameCollection
     /**
      * @var array
      */
-    private $frames;
+    private array $frames;
 
     /**
      * @param Frame $frame
      */
-    public function addFrame(Frame $frame)
+    public function addFrame(Frame $frame): void
     {
         $this->frames[] = $frame;
     }

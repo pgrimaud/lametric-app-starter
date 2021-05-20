@@ -6,5 +6,4 @@ namespace LaMetric\Exception;
 
 class InvalidArgumentException extends \Exception
 {
-
 }

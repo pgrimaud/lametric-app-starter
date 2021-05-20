@@ -9,24 +9,8 @@ use LaMetric\Response\{Frame, FrameCollection};
 
 class Api
 {
-    /**
-     * @var Client
-     */
-    private $client;
-
-    /**
-     * @var array
-     */
-    private $credentials;
-
-    /**
-     * @param Client $client
-     * @param array $credentials
-     */
-    public function __construct(Client $client, array $credentials = [])
+    public function __construct(private Client $client, private array $credentials = [])
     {
-        $this->client      = $client;
-        $this->credentials = $credentials;
     }
 
     /**

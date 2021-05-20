@@ -11,16 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
-    /**
-     * @var array
-     */
-    protected $parameters;
-
-    protected function setUp(): void
-    {
-        $this->parameters = include_once __DIR__ . '/config/fields.php';
-    }
-
     public function testValidParameters(): void
     {
         $httpGetData = [
@@ -31,7 +21,7 @@ class ValidatorTest extends TestCase
         ];
 
         $validator = new Validator($httpGetData);
-        $result    = $validator->check($this->parameters);
+        $result    = $validator->check(include_once __DIR__ . '/config/fields.php');
 
         $this->assertEquals(true, $result);
     }

@@ -11,7 +11,7 @@ class Validator
     /**
      * @var array
      */
-    private $parameters = [];
+    private array $parameters;
 
     /**
      * @param array $parameters
@@ -31,7 +31,6 @@ class Validator
     public function check(array $fields = []): bool
     {
         foreach ($fields as $field) {
-
             $key = $field['key'];
 
             if (!isset($this->parameters[$key])) {
