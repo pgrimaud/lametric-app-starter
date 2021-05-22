@@ -50,6 +50,20 @@ Fields type association with https://developer.lametric.com :
 
 The `src/Validator.php` object will check parameters sent by the app and manage errors.
 
+You can also add `default` key to a field. If the value is missing from app request, this valus will be use.
+
+e.g.
+
+```php
+return [
+    [
+        'key'     => 'field-1',
+        'type'    => Field::TEXT_TYPE,
+        'default' => 'hello'
+    ],
+];
+```
+
 ### Step 2
 
 Add you logic to the method `fetchData()` in `src/Api.php`.

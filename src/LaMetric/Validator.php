@@ -33,8 +33,10 @@ class Validator
         foreach ($fields as $field) {
             $key = $field['key'];
 
-            if (!isset($this->parameters[$key])) {
+            if (!isset($this->parameters[$key]) && !isset($field['default'])) {
                 throw new MissingArgumentException(sprintf('Missing %s argument', $key));
+            } elseif (!isset($this->parameters[$key]) && isset($field['default'])) {
+                $this->parameters[$key] = $field['default'];
             }
 
             switch ($field['type']) {
@@ -44,7 +46,7 @@ class Validator
                     }
                     break;
                 case Field::NUMBER_TYPE:
-                    if ((int)$this->parameters[$key] === 0) {
+                    if ((int) $this->parameters[$key] === 0) {
                         throw new InvalidArgumentException(sprintf('Invalid %s argument', $key));
                     }
                     break;

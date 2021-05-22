@@ -36,9 +36,25 @@ class ValidatorTest extends TestCase
         $validator->check([
             [
                 'key'  => 'field-1',
-                'type' => Field::TEXT_TYPE
-            ]
+                'type' => Field::TEXT_TYPE,
+            ],
         ]);
+    }
+
+    public function testMissingTextParameterWithDefaultValue(): void
+    {
+        $httpGetData = [];
+
+        $validator = new Validator($httpGetData);
+        $result    = $validator->check([
+            [
+                'key'     => 'field-1',
+                'type'    => Field::TEXT_TYPE,
+                'default' => 'hello',
+            ],
+        ]);
+
+        $this->assertEquals(true, $result);
     }
 
     public function testInvalidTextParameter(): void
@@ -46,15 +62,15 @@ class ValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $httpGetData = [
-            'field-1' => ''
+            'field-1' => '',
         ];
 
         $validator = new Validator($httpGetData);
         $validator->check([
             [
                 'key'  => 'field-1',
-                'type' => Field::TEXT_TYPE
-            ]
+                'type' => Field::TEXT_TYPE,
+            ],
         ]);
     }
 
@@ -63,15 +79,15 @@ class ValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $httpGetData = [
-            'field-1' => 'number'
+            'field-1' => 'number',
         ];
 
         $validator = new Validator($httpGetData);
         $validator->check([
             [
                 'key'  => 'field-1',
-                'type' => Field::NUMBER_TYPE
-            ]
+                'type' => Field::NUMBER_TYPE,
+            ],
         ]);
     }
 
@@ -80,15 +96,15 @@ class ValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $httpGetData = [
-            'field-1' => 'number'
+            'field-1' => 'number',
         ];
 
         $validator = new Validator($httpGetData);
         $validator->check([
             [
                 'key'  => 'field-1',
-                'type' => Field::SWITCH_TYPE
-            ]
+                'type' => Field::SWITCH_TYPE,
+            ],
         ]);
     }
 
@@ -97,7 +113,7 @@ class ValidatorTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
 
         $httpGetData = [
-            'field-1' => 'no'
+            'field-1' => 'no',
         ];
 
         $validator = new Validator($httpGetData);
@@ -109,9 +125,9 @@ class ValidatorTest extends TestCase
                     'yes',
                     'ya',
                     'da',
-                    'oui'
-                ]
-            ]
+                    'oui',
+                ],
+            ],
         ]);
     }
 }

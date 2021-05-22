@@ -4,8 +4,9 @@ use LaMetric\Field;
 
 return [
     [
-        'key'  => 'field-1',
-        'type' => Field::TEXT_TYPE,
+        'key'     => 'field-1',
+        'type'    => Field::TEXT_TYPE,
+        'default' => 'hello',
     ],
     [
         'key'  => 'field-2',
@@ -23,6 +24,6 @@ return [
             'captain-america',
             'ant-man',
             'thor',
-        ]
-    ]
+        ],
+    ],
 ];
