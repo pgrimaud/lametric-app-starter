@@ -17,9 +17,11 @@ class Response
     {
         return $this->asJson([
             'frames' => [
-                'index' => 0,
-                'text'  => $value,
-                'icon'  => 'null',
+                [
+                    'index' => 0,
+                    'text'  => $value,
+                    'icon'  => 'null',
+                ],
             ],
         ]);
     }
@@ -42,7 +44,7 @@ class Response
     public function printData(FrameCollection $frameCollection): string
     {
         $response = [
-            'frames' => []  ,
+            'frames' => [],
         ];
 
         /** @var Frame $frame */
